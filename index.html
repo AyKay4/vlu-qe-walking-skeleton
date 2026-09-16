@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+    }
+    .login-card {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <h2>Đăng Nhập</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Tên đăng nhập:</label>
+        <input type="text" id="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" required>
+      </div>
+      <button type="submit">Đăng nhập</button>
+    </form>
+    <div id="message"></div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault(); 
+
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      const messageDiv = document.getElementById('message');
+
+      if (login(user, pass)) {
+        messageDiv.style.color = 'green';
+        messageDiv.textContent = 'Đăng nhập thành công!';
+      } else {
+        messageDiv.style.color = 'red';
+        messageDiv.textContent = 'Sai tài khoản hoặc mật khẩu!';
+      }
+    });
+  </script>
+</body>
+</html>
